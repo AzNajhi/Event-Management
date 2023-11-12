@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - name: Checkout Repository
@@ -24,7 +24,8 @@ jobs:
         pip install pyinstaller openpyxl
 
     - name: Run PyInstaller
-      run: "./Event Management System/build.sh"
+      shell: cmd
+      run: .\Event Management System\build.bat
            
     - name: Upload Executable
       uses: actions/upload-artifact@v2
