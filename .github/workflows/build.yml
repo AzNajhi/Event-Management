@@ -1,0 +1,36 @@
+name: Build Executable
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+
+    - name: Install PyInstaller
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyinstaller
+
+    - name: Run PyInstaller
+      run: |
+        pyinstaller --onefile \
+           --hidden-import options \
+           --hidden-import automated \
+           --hidden-import manual \
+           --hidden-import autotable \
+           --hidden-import manualtable \
+           --hidden-import autosave \
+           --hidden-import mansave \
+           main.py
