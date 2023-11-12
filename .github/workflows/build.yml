@@ -33,7 +33,7 @@ jobs:
            --hidden-import manualtable `
            --hidden-import autosave `
            --hidden-import mansave `
-           main.py
+           ".\Event Management System\main.py"
            
     - name: Upload Executable
       uses: actions/upload-artifact@v2
