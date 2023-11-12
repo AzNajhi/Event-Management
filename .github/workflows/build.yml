@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout Repository
@@ -21,7 +21,7 @@ jobs:
     - name: Install PyInstaller
       run: |
         python -m pip install --upgrade pip
-        pip install pyinstaller
+        pip install pyinstaller openpyxl
 
     - name: Run PyInstaller
       run: |
@@ -34,3 +34,9 @@ jobs:
            --hidden-import autosave \
            --hidden-import mansave \
            main.py
+           
+    - name: Upload Executable
+      uses: actions/upload-artifact@v2
+      with:
+        name: executable
+        path: dist/main  # Adjust the path based on your PyInstaller setup
