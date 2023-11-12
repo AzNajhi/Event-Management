@@ -7,4 +7,4 @@ pyinstaller --onefile ^
    --hidden-import manualtable ^
    --hidden-import autosave ^
    --hidden-import mansave ^
-   ".\main.py"
+   main.py
