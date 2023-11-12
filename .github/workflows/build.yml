@@ -25,8 +25,7 @@ jobs:
 
     - name: Run PyInstaller
       run: |
-          cd "Event Management System"
-          cmd /c build.bat
+          cmd /c "Event Management System\build.bat"
            
     - name: Upload Executable
       uses: actions/upload-artifact@v2
