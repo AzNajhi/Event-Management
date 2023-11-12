@@ -23,10 +23,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyinstaller openpyxl
 
+    - name: Checking current directory
+      run: echo %cd%
+
     - name: Run PyInstaller
-      run: |
-        cd "Event Management System"
-        pyinstaller --onefile --hidden-import options --hidden-import automated --hidden-import manual --hidden-import autotable --hidden-import manualtable --hidden-import autosave --hidden-import mansave main.py
+      run: pyinstaller --onefile --hidden-import options --hidden-import automated --hidden-import manual --hidden-import autotable --hidden-import manualtable --hidden-import autosave --hidden-import mansave main.py
            
     - name: Upload Executable
       uses: actions/upload-artifact@v2
