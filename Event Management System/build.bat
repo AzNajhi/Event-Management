@@ -7,4 +7,4 @@ pyinstaller --onefile ^
    --hidden-import manualtable ^
    --hidden-import autosave ^
    --hidden-import mansave ^
-   ".\Event Management System\main.py"
+   ".\main.py"
