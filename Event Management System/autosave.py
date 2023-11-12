@@ -20,13 +20,25 @@ def save(session_list, days, sessions):
     if not os.path.exists(folder_name):
         os.makedirs(folder_name)
 
+    counter = 0
     filename = 'autoplan_savefile'
-    counter = 1
-    new_filename = f'{filename}_{counter}.xlsx'
-
-    while os.path.exists(new_filename):
+    while os.path.exists(f"{folder_name}/{filename}.xlsx"):
+        print("filename already existed!")
         counter += 1
         new_filename = f'{filename}_{counter}.xlsx'
+        while os.path.exists(f"{folder_name}/{new_filename}"):
+            print("new filename already existed!")
+            counter += 1
+            new_filename = f'{filename}_{counter}.xlsx'
+        if not os.path.exists(f"{folder_name}/{new_filename}"):
+            file_path = os.path.join(folder_name, new_filename)
+            workbook.save(file_path)
+            print("new file saved")
+            return
 
-    file_path = os.path.join(folder_name, new_filename)
-    workbook.save(file_path)
+
+    if not os.path.exists(f"{folder_name}/{filename}"):
+        file_path = os.path.join(folder_name, f"{filename}.xlsx")
+        workbook.save(file_path)
+        print("file saved")
+        return
