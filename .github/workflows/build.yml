@@ -24,8 +24,9 @@ jobs:
         pip install pyinstaller openpyxl
 
     - name: Run PyInstaller
-      shell: cmd
-      run: .\Event Management System\build.bat
+      run: |
+          cd "Event Management System"
+          cmd /c build.bat
            
     - name: Upload Executable
       uses: actions/upload-artifact@v2
