@@ -1,3 +1,4 @@
+@echo off
 pyinstaller --onefile ^
    --hidden-import options ^
    --hidden-import automated ^
@@ -6,4 +7,4 @@ pyinstaller --onefile ^
    --hidden-import manualtable ^
    --hidden-import autosave ^
    --hidden-import mansave ^
-   main.py
+   .\Event Management System\main.py
