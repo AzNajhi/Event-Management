@@ -32,7 +32,7 @@ jobs:
 
     - name: Push Executable File into Repository
       run: |
-        cd "Event Management System"
+        cd "Mezza9-Solution"
         dir
         del /q main.spec
         rmdir /s /q build
