@@ -27,4 +27,4 @@ jobs:
         pip install pyinstaller openpyxl
 
     - name: Checking current directory
-      run: dir
+      run: cd "Event Management System"
