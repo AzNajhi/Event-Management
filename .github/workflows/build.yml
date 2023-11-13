@@ -23,15 +23,15 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyinstaller openpyxl
 
-    - name: Clone Repository
+    - name: Clone Repository & Run Batch File
       run: |
         git clone https://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@github.com/AzNajhi/Mezza9-Solution.git 
         cd "Mezza9-Solution"
-        dir
         build.bat
 
     - name: Push Executable File into Repository
       run: |
+        dir
         del /q main.spec
         rmdir /s /q build
         ren dist "Executable File"
