@@ -29,6 +29,12 @@ jobs:
     - name: Run Batch File
       run: build.bat
 
+    - name: Git Config
+      run: | 
+        git config --global user.name "aznajhi"
+        git config --global user.email "aznajhi97work@gmail.com"
+        git config --global --list
+
     - name: Push Executable File into Repository
       run: |
         del /q main.spec
