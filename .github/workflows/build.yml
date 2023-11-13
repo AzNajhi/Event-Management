@@ -24,13 +24,6 @@ jobs:
         pip install pyinstaller openpyxl
 
     - name: Checking current directory
-      shell: cmd
-      run: echo %cd%
-
-    - name: Change to parent directory
-      shell: cmd
-      run: cd ..
-
-    - name: Checking current directory again
-      shell: cmd
-      run: echo %cd%
+      run: |
+        Set-Location -Path "Event Management System"
+        Get-Location
