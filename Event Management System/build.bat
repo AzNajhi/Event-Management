@@ -1,3 +1,4 @@
+@echo off
 pyinstaller --onefile ^
    --hidden-import options ^
    --hidden-import automated ^
