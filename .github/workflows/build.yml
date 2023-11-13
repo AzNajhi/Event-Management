@@ -26,6 +26,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyinstaller openpyxl  
 
+    - name: Set Git Credentials
+      uses: actions/setup-git@v2
+      with:
+        token: ${{ secrets.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 }}
+        fetch-depth: 0
+
     - name: Run Batch File
       run: build.bat
 
@@ -35,6 +41,8 @@ jobs:
         rmdir /s /q build
         ren dist "Executable File"
         git add "Executable File\main.exe"
+        git commit -m "Update Executable File"
+        git pull origin main
         git push origin main
         
         
