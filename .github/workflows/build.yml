@@ -2,8 +2,8 @@ name: Build Executable
 
 on:
   push:
-    branches:
-      - main
+    paths:
+      - "Event Management System/**"
 
 jobs:
   build:
@@ -27,14 +27,16 @@ jobs:
         pip install pyinstaller openpyxl  
 
     - name: Run Batch File
-      run: | 
-        cd "Event Management System"
-        build.bat
+      run: build.bat
 
-    - name: Checking Directories
+    - name: Push Executable File into Repository
       run: |
-        cd "Event Management System\dist"
-        cd 
-        dir
+        del /q main.spec
+        rmdir /s /q build
+        ren dist "Executable File"
+        git add "Executable File\main.exe"
+        git push origin main
+        
+        
 
       
