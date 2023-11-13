@@ -13,12 +13,6 @@ jobs:
         shell: cmd
 
     steps:
-    - name: Checkout Repository
-      run: |
-        git clone https://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@github.com/AzNajhi/Mezza9-Solution.git 
-        cd "Mezza9-Solution"
-        dir
-
     - name: Install Python
       uses: actions/setup-python@v2
       with:
@@ -29,14 +23,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyinstaller openpyxl
 
-    - name: Run Batch File
-      run: build.bat
-
-    - name: Git Config
-      run: | 
-        git config --global user.name "aznajhi"
-        git config --global user.email "aznajhi97work@gmail.com"
-        git config --global --list
+    - name: Clone Repository
+      run: |
+        git clone https://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@github.com/AzNajhi/Mezza9-Solution.git 
+        cd "Mezza9-Solution"
+        dir
+        build.bat
 
     - name: Push Executable File into Repository
       run: |
