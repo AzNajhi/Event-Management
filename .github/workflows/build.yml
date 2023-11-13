@@ -8,6 +8,9 @@ on:
 jobs:
   build:
     runs-on: windows-latest
+    defaults:
+      run:
+        shell: cmd
 
     steps:
     - name: Checkout Repository
@@ -24,6 +27,4 @@ jobs:
         pip install pyinstaller openpyxl
 
     - name: Checking current directory
-      run: |
-        Set-Location -Path "Event Management System"
-        Get-Location
+      run: dir
