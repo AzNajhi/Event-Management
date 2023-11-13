@@ -5,5 +5,6 @@ pyinstaller --onefile ^
    --hidden-import autotable ^
    --hidden-import manualtable ^
    --hidden-import autosave ^
-   --hidden-import mansave ^
+   --hidden-import manualsave ^
    main.py
+
