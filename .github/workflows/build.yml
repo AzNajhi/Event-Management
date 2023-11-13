@@ -21,10 +21,7 @@ jobs:
       with:
         python-version: 3.x
 
-    - name: Install PyInstaller
-      run: |
-        python -m pip install --upgrade pip
-        pip install pyinstaller openpyxl
-
     - name: Checking current directory
-      run: cd "Event Management System"
+      run: | 
+        cd "Event Management System"
+        dir
