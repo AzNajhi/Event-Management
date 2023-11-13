@@ -28,15 +28,21 @@ jobs:
       run: |
         git clone https://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@github.com/AzNajhi/Mezza9-Solution.git 
         cd "Mezza9-Solution"
+        echo <Before Execute Batch File>
+        dir
         build.bat
+        echo <After Execute Batch File>
+        dir
 
     - name: Push Executable File into Repository
       run: |
         cd "Mezza9-Solution"
+        echo <Before Cleaning Up>
         dir
         del /q main.spec
         rmdir /s /q build
         ren dist "Executable File"
+        echo <After Cleaning Up>
         dir
         git add "Executable File\main.exe"
         git commit -m "Update Executable File"
