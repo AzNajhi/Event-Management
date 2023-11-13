@@ -26,12 +26,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyinstaller openpyxl  
 
-    - name: Set Git Credentials
-      uses: actions/setup-git@v2
-      with:
-        token: ${{ secrets.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 }}
-        fetch-depth: 0
-
     - name: Run Batch File
       run: build.bat
 
