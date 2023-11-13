@@ -33,6 +33,7 @@ jobs:
 
     - name: Checking Directories
       run: |
+        cd "Event Management System"
         dir
 
       
