@@ -42,8 +42,11 @@ jobs:
         rmdir /s /q build
         ren dist "Executable File"
         dir
+        git status
         git add "Executable File\main.exe"
+        git status
         git commit -m "Update Executable File"
+        git status
         git pull origin main
         git push origin main
         
