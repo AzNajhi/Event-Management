@@ -26,23 +26,23 @@ jobs:
 
     - name: Clone Repository & Run Batch File
       run: |
-        git clone https://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@github.com/AzNajhi/Mezza9-Solution.git 
+        git clone https://${{ secrets.IV_TOKEN }}@github.com/AzNajhi/Mezza9-Solution.git 
         cd "Mezza9-Solution"
-        echo <Before Execute Batch File>
+        echo Before Execute Batch File:
         dir
         build.bat
-        echo <After Execute Batch File>
+        echo After Execute Batch File:
         dir
 
     - name: Push Executable File into Repository
       run: |
         cd "Mezza9-Solution"
-        echo <Before Cleaning Up>
+        echo Before Cleaning Up:
         dir
         del /q main.spec
         rmdir /s /q build
         ren dist "Executable File"
-        echo <After Cleaning Up>
+        echo After Cleaning Up:
         dir
         git add "Executable File\main.exe"
         git commit -m "Update Executable File"
