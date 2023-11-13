@@ -40,6 +40,7 @@ jobs:
         dir
         del /q main.spec
         rmdir /s /q build
+        rmdir /s /q "Executable File"
         ren dist "Executable File"
         dir
         git status
