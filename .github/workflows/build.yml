@@ -24,4 +24,4 @@ jobs:
     - name: Checking current directory
       run: | 
         cd "Event Management System"
-        dir
+        build.bat
