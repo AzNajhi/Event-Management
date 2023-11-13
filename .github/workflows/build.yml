@@ -37,6 +37,7 @@ jobs:
         del /q main.spec
         rmdir /s /q build
         ren dist "Executable File"
+        dir
         git add "Executable File\main.exe"
         git commit -m "Update Executable File"
         git pull origin main
