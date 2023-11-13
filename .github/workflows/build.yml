@@ -16,6 +16,7 @@ jobs:
     - name: Checkout Repository
       run: |
         git clone https://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@github.com/AzNajhi/Mezza9-Solution.git 
+        cd "Mezza9-Solution"
         dir
 
     - name: Install Python
