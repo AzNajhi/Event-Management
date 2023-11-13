@@ -6,5 +6,3 @@ if __name__ == "__main__":
     root.title("Mezza9 Solutions")
     options.options(root)
     root.mainloop()
-
-    # comment
