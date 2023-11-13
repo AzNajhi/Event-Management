@@ -26,8 +26,8 @@ jobs:
 
     - name: Clone Repository & Run Batch File
       run: |
-        echo ${{ secrets.IV_TOKEN }}
-        echo git clone https://${{ secrets.IV_TOKEN }}@github.com/AzNajhi/Mezza9-Solution.git 
+        echo ${{ vars.IV_TOKEN }}
+        echo git clone https://${{ vars.IV_TOKEN }}@github.com/AzNajhi/Mezza9-Solution.git 
         cd "Mezza9-Solution"
         echo <Before Execute Batch File>
         dir
