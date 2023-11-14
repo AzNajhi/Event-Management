@@ -36,6 +36,7 @@ jobs:
 
     - name: Push Executable File into Repository
       run: |
+        cd "Mezza9-Solution"
         git status
         git add "Executable File/main.exe"
         git status
