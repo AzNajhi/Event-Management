@@ -12,5 +12,5 @@ pyinstaller --onefile --noconsole ^
 
 del /q main.spec
 rmdir /s /q build
-move dist\main.exe "Executable File\"
-rmdir /s /q dist
+ren dist "Executable File"
+copy "Event Management System\Icon\" "Executable File\" /e /i /s
