@@ -36,13 +36,6 @@ jobs:
 
     - name: Push Executable File into Repository
       run: |
-        cd "Mezza9-Solution"
-        dir
-        del /q main.spec
-        rmdir /s /q build
-        rmdir /s /q "Executable File"
-        ren dist "Executable File"
-        dir
         git status
         git add "Executable File/main.exe"
         git status
