@@ -108,6 +108,7 @@ class Sessions:
         total_yellow = 0
         total_red = 0
         total_lightgray = 0
+
         for x in range(days):
             for y in range(sessions):
                 if session_list[x][y].color == "green":
@@ -118,7 +119,24 @@ class Sessions:
                     total_red += 1
                 if session_list[x][y].color == "light gray":
                     total_lightgray += 1
+
         yellow_percent = total_yellow/(sessions*days)
+
+        if total_red == 0:
+            chk_var1.set(1)
+        else:
+            chk_var1.set(0)
+
+        if total_lightgray == 0:
+            chk_var2.set(1)
+        else:
+            chk_var2.set(0)
+
+        if yellow_percent <= 0.1:
+            chk_var3.set(1)
+        else:
+            chk_var3.set(0)
+
         if total_lightgray == 0 and total_red == 0 and yellow_percent <= 0.1 and message == "Proceed":
             save_button.config(state="normal")
         else:
@@ -160,6 +178,9 @@ def arrange_table(root, day, session, attendant):
     global frame_message
     global duplicate_message
     global save_button
+    global chk_var1
+    global chk_var2
+    global chk_var3
 
     # 1 Create list of sessions
     days = day
@@ -188,7 +209,8 @@ def arrange_table(root, day, session, attendant):
     frame_table = Frame(table_window)
     frame_form = Frame(table_window)
     frame_message = Frame(table_window)
-    table_window.title("Manual Planning Table")
+    table_window.title("Manual Schedule")
+    table_window.iconbitmap(r"Icon\Mezza9-Icon.ico")
     save_button = Button(table_window, padx=20, text="Save", font=("TkDefaultFont 10"), command=lambda: manualsave.save(session_list, days, sessions))
     save_button.grid(row=2, columnspan=3, padx=20, pady=10, sticky=E)
     days_label = []
@@ -209,17 +231,27 @@ def arrange_table(root, day, session, attendant):
             session_list[x][y].form_dict["plus_button"] = Button(frame_form, text="+", command=session_list[x][y].add_entry)
             session_list[x][y].form_dict["minus_button"] = Button(frame_form, text="-", command=session_list[x][y].remove_entry, state=DISABLED)
 
+    chk_var1 = IntVar()
+    chk_var2 = IntVar()
+    chk_var3 = IntVar()
+    check_redcolor = Checkbutton(frame_message, text="No Red Color", variable=chk_var1, state="disabled")
+    check_lightgraycolor = Checkbutton(frame_message, text="No Light Gray Color", variable=chk_var2, state="disabled")
+    check_yellowcolor = Checkbutton(frame_message, text="Yellow Color <= 10%", variable=chk_var3, state="disabled")
     duplicate_message = Label(frame_message, text="Duplicate IDs found:")
+    
     # 6 Create message box widgets to display duplicate staff IDs and their positions
-    display_table(days_label, duplicate_message)
+    display_table(days_label, check_redcolor, check_lightgraycolor, check_yellowcolor, duplicate_message)
 
 # 7 Display event's schedule
-def display_table(days_label, duplicate_message):
+def display_table(days_label, check_redcolor, check_lightgraycolor, check_yellowcolor, duplicate_message):
     for x in range(days):
         days_label[x].grid(row=x, column=0, padx=10)
         for y in range(sessions):
             session_list[x][y].button.grid(row=x, column=y+1)
-    duplicate_message.grid(padx=20, pady=20)
+    check_redcolor.grid(row=0, sticky=W)
+    check_lightgraycolor.grid(row=1, sticky=W)
+    check_yellowcolor.grid(row=2, sticky=W)
+    duplicate_message.grid(row=3, padx=20, pady=20, sticky=W)
     frame_table.grid(row=0, column=0, padx=10, pady=20, sticky=N)
     frame_message.grid(row=0, column=1, pady=20, sticky=N)
     frame_form.grid(row=0, column=2, padx=20, pady=20, sticky=N)

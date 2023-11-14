@@ -1,3 +1,4 @@
+from tkinter import messagebox
 import openpyxl
 import os
 
@@ -23,22 +24,19 @@ def save(session_list, days, sessions):
     counter = 0
     filename = 'autoplan_savefile'
     while os.path.exists(f"{folder_name}/{filename}.xlsx"):
-        print("filename already existed!")
         counter += 1
         new_filename = f'{filename}_{counter}.xlsx'
         while os.path.exists(f"{folder_name}/{new_filename}"):
-            print("new filename already existed!")
             counter += 1
             new_filename = f'{filename}_{counter}.xlsx'
         if not os.path.exists(f"{folder_name}/{new_filename}"):
             file_path = os.path.join(folder_name, new_filename)
             workbook.save(file_path)
-            print("new file saved")
+            messagebox.showinfo("Message", "Schedule has been saved.")
             return
-
 
     if not os.path.exists(f"{folder_name}/{filename}"):
         file_path = os.path.join(folder_name, f"{filename}.xlsx")
         workbook.save(file_path)
-        print("file saved")
+        messagebox.showinfo("Message", "Schedule has been saved.")
         return

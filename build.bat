@@ -1,5 +1,6 @@
 @echo off
-pyinstaller --onefile ^
+pyinstaller --onefile --noconsole ^
+   --icon "Event Management System\Icon\Mezza9-Icon.ico" ^
    --hidden-import options ^
    --hidden-import automated ^
    --hidden-import manual ^
@@ -9,3 +10,7 @@ pyinstaller --onefile ^
    --hidden-import manualsave ^
    "Event Management System\main.py"
 
+del /q main.spec
+rmdir /s /q build
+move dist\main.exe "Executable File\"
+rmdir /s /q dist

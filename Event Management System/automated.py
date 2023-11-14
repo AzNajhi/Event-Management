@@ -106,7 +106,6 @@ def remove_duplicate():
     global entry_list
     entry_set = set()
     new_entry_list = []
-    print(new_entry_list)
     for x in entry_list:
         if x.winfo_exists():
             value = x.get()

@@ -68,7 +68,8 @@ def arrange_table(root, day, session, attendant, staffid_list):
         table_window = Toplevel(root)
         frame_assignedstaff = Frame(table_window)
         frame_table = Frame(table_window)
-        table_window.title("Automated Planning Table")
+        table_window.title("Auto Schedule")
+        table_window.iconbitmap(r"Icon\Mezza9-Icon.ico")
         save_button = Button(table_window, padx=20, text="Save", font=("TkDefaultFont 10"), command=lambda: autosave.save(session_list, days, sessions))
         save_button.grid(row=2, padx=20, pady=10, sticky=E)
         days_label = []
