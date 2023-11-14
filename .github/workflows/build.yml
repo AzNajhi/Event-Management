@@ -47,6 +47,7 @@ jobs:
 
     - name: Compress Into Zip Folder
       run: |
+        cd "Mezza9-Solution"
         del /q main.spec
         rmdir /s /q build
         rmdir /s /q "Executable File"
