@@ -24,17 +24,41 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyinstaller openpyxl
 
-    - name: Clone Repository & Run Batch File
+    - name: Clone Repository
       run: |
         git config --global user.email "aznajhi97work@gmail.com"
         git config --global user.name "aznajhi"
-        git clone https://${{ secrets.IV_TOKEN }}@github.com/AzNajhi/Mezza9-Solution.git 
-        cd "Mezza9-Solution"
-        dir
-        build.bat
-        dir
+        git clone https://${{ secrets.IV_TOKEN }}@github.com/AzNajhi/Mezza9-Solution.git
 
-    - name: Push Executable File into Repository
+    - name: Create Standalone Executable File
+      run: |
+        cd "Mezza9-Solution"
+        @echo off
+        pyinstaller --onefile --noconsole ^
+        --icon "Event Management System\Icon\Mezza9-Icon.ico" ^
+        --hidden-import options ^
+        --hidden-import automated ^
+        --hidden-import manual ^
+        --hidden-import autotable ^
+        --hidden-import manualtable ^
+        --hidden-import autosave ^
+        --hidden-import manualsave ^
+        "Event Management System\main.py"
+
+    - name: Compress Into Zip Folder
+      run: |
+        del /q main.spec
+        rmdir /s /q build
+        rmdir /s /q "Executable File"
+        cd dist
+        ren main.exe "Event Management System.exe"
+        cd ..
+        ren dist "Executable File"
+        xcopy "Event Management System\Icon" "Executable File\Icon" /e /i /s
+        tar -a -c -f "Executable File.zip" "Executable File"
+        rmdir /s /q "Executable File"
+
+    - name: Push Updated Zip Folder into Repository
       run: |
         cd "Mezza9-Solution"
         git status
@@ -44,8 +68,3 @@ jobs:
         git status
         git pull origin main
         git push origin main
-        
-        
-        
-
-      
