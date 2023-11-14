@@ -38,7 +38,7 @@ jobs:
       run: |
         cd "Mezza9-Solution"
         git status
-        git add "Executable File/main.exe"
+        git add "Executable File.zip"
         git status
         git commit -m "Update Executable File"
         git status
