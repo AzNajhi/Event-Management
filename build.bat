@@ -14,4 +14,6 @@ del /q main.spec
 rmdir /s /q build
 rmdir /s /q "Executable File"
 ren dist "Executable File"
-copy "Event Management System\Icon\" "Executable File\" /e /i /s
+xcopy "Event Management System\Icon" "Executable File\Icon" /e /i /s
+tar -a -c -f "Executable File.zip" "Executable File"
+rmdir /s /q "Executable File"
